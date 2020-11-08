@@ -1539,6 +1539,7 @@ void Adafruit_GFX::getTextBounds(const __FlashStringHelper *str, int16_t x,
 /**************************************************************************/
 void Adafruit_GFX::invertDisplay(bool i) {
   // Do nothing, must be subclassed if supported by hardware
+  UNUSED(i);
 }
 
 /***************************************************************************/
@@ -2088,7 +2089,7 @@ void GFXcanvas1::drawFastRawHLine(int16_t x, int16_t y, int16_t w,
 
     if (lastByteBits > 0) {
       uint8_t lastByteBitMask = 0x00;
-      for (int8_t i = 0; i < lastByteBits; i++) {
+      for (size_t i = 0; i < lastByteBits; i++) {
 #ifdef __AVR__
         lastByteBitMask |= pgm_read_byte(&GFXsetBit[i]);
 #else

@@ -390,4 +390,16 @@ private:
   uint16_t *buffer;
 };
 
+/*
+ * One method exists which is only intended to be subclassed, so it
+ * contains no code. The compiler complains that the arguments to this
+ * method are unused, but this is our intention. Tell the compiler this.
+ */
+
+#ifdef UNUSED
+/* nothing, someone else used our macro name */
+#else
+# define UNUSED(x) (void)(x)
+#endif
+
 #endif // _ADAFRUIT_GFX_H
